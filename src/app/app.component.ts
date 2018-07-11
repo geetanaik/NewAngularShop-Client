@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  items: Array<any> = []
+
+  constructor() {
+    this.items = [
+      { name: 'assets/images/home1.jpeg' },
+      { name: 'assets/images/home2.jpeg' },
+      { name: 'assets/images/home3.jpeg' },
+      { name: 'assets/images/home1.jpeg' },
+      { name: 'assets/images/home2.jpeg' },
+      { name: 'assets/images/home3.jpeg' },
+      { name: 'assets/images/home1.jpeg' },
+      { name: 'assets/images/home2.jpeg' },
+      
+    ]
+  }
 }

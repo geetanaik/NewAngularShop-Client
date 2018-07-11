@@ -1,0 +1,63 @@
+         
+   <div class="row">
+   <div class="col-sm-2 col-md-3 col-lg-1">
+    <app-sidebar></app-sidebar>
+   </div>
+   
+      <div class="col-sm-2 col-md-3 col-lg-9">
+      <div ng2-carouselamos class="slides-wrapper" [items]="productList" [width]="900" [$prev]="prev" [$next]="next" 
+      [$item]="item" (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+      </div> 
+      <ng-template #prev>
+        <img src="../assets/images/left-arrow.png" id="left" height="15px" />
+      </ng-template>
+      <ng-template #next>
+        <img src="../assets/images/right.jpeg" id="right" height="15px" />
+      </ng-template>
+      <!-- <div>
+        Current item selected
+      </div> -->
+      <ng-template #item let-item let-i="index" #item>
+
+        <div class="prod" style="min-width: 200px">
+          
+          <p > {{item.productName}}</p>
+          <a class="route" href="products/{{item.id}}" (click)= 'DisplayProduct(item)'>
+          <p><img src="http://localhost:8282{{item.imageUrl}}" style="width:150px;height:150px"/> </p>
+        </a>
+          <p>Price:{{item.price}}$</p>
+          <p> Item Description: </p>
+          <div class="stars-inner"></div>
+          <!-- <button (click)="addProductToCart(item);" class="btn btn-primary"> Add to Cart </button> -->
+          <!-- <button (click)="addProductToCart(item);" 
+     [ngClass]="inCartProduct(item)? 'btn btn-success' : 'btn btn-primary'"> 
+     {{inCartProduct(item) ? 'In Cart' : 'Add to cart'}}
+    </button> -->
+
+    <div class="card-footer">
+      <!-- <span class="left">{{ item.price }} $</span> -->
+      <span class="right">
+        <!-- <a placement="top" mdbTooltip="Quick Look" container="body" [routerLink]="['/products/product', product.$key]"> -->
+          <i class="fa fa-eye"></i>
+       
+        <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
+          <i class="fa fa-heart"></i>
+        </a>
+        <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
+          <i class="fa fa-shopping-cart"></i>
+        </a>
+        <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeProductFromCart(item)">
+          <i class="fa fa-trash"></i>
+        </a>
+      </span>
+    </div>
+    </div> 
+
+      </ng-template>
+    </div>
+    <div class="col-sm-2 col-md-3 col-lg-3">
+        <app-cart></app-cart>
+    </div>
+    </div>
+   
+   

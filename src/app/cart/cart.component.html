@@ -1,0 +1,42 @@
+ <div style="margin-top: 30px;">
+   
+    <!-- <img src="/assets/images/cart.jpeg">
+    <hr/> -->
+    <div class="cart">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                    <div><img src="assets/images/cart.jpeg" style="width:100px;height:100px;float:right"></div>
+                    <div class="cart__body">
+                      <div class="cart-item" *ngFor="let prod of productsInCart">
+                        <div style="display: inline;">
+                            <button class="btn btn-danger btn-xs" (click)="removeProductFromCart(prod);">X</button>
+                            <span class="cart-item__name">{{prod.productName}}</span>  
+                        </div>
+                        <div class="cart-item__price">{{prod.price}} $</div>
+                        <!-- <div>
+                         quantity <input type="number"  [(ngModel)]="cartItem.quantity"  default=1 min="1" max="99" required>
+                        </div>  -->
+                       
+
+                    </div>
+                   
+                    </div>
+                    
+                   <div class="alert alert-info" *ngIf="productsInCart.length==0">Cart is empty</div>
+                 <hr/>
+                  <div class="checkout" *ngIf="productsInCart.length>0">
+               
+                     
+                      <span class="cart__total">   
+                            Total: {{total}} $
+                     </span> 
+                     <button type="button"  class="btn btn-warning" (click)="checkitout()">Checkout</button>                 
+                 </div>  
+               
+            </div>
+        </div>
+    </div> 
+  </div>
+
+
+    
