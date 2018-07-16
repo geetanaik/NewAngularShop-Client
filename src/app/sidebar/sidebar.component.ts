@@ -27,6 +27,7 @@ export class SidebarComponent implements OnInit {
     // Set an initial value
      
      let categories: Observable<String[]>=this.getproductService.getcategories();
+     //debugger;
      categories.subscribe((results)=>{this.categoryList=results});
      //alert(results);
  

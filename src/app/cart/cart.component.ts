@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Products } from '../model/product';
 import { AppGlobal } from '../config/app-global';
 import { GetproductsService } from '../getproducts/getproducts.service';
-import { CartserviceService } from '../cartservice.service';
+import { CartserviceService } from './cartservice.service';
+
 
 @Component({
   selector: 'app-cart',
@@ -16,20 +17,14 @@ export class CartComponent implements OnInit {
   private productsInCart:Products[]=[];
   public total:number=0;
   public tar:any;
+  
 
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,private router: Router,private getproductService:GetproductsService,private cart:CartserviceService) { }
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,private router: Router,private getproductService:GetproductsService,private cart:CartserviceService,private route:ActivatedRoute) { }
 
   ngOnInit() {
-    // get a variable assign session storage cart Key-value pair to it.  to check if there is anything in session storage in cart. 
-    var tt=this.storage.get(AppGlobal.CART_KEY);
+   var tt=this.storage.get(AppGlobal.CART_KEY);
    if(tt!=null){
       this.productsInCart= this.storage.get(AppGlobal.CART_KEY);
-
-      // let num = [7, 8, 9];
-      // num.forEach(function (value) {
-      //   console.log(value);
-      // }); 
-      
       this.productsInCart.forEach((item => this.total = this.total+item.price))
     }
   }
@@ -61,6 +56,7 @@ export class CartComponent implements OnInit {
 
      this.productsInCart.push(cproduct);
      this.total=this.total+cproduct.price;
+     debugger
      //alert(this.total)
     // console.log("Product is added into the cart successfully...........");
     // console.log(cproduct);
@@ -72,6 +68,7 @@ export class CartComponent implements OnInit {
     this.productsInCart=this.productsInCart.filter(item =>item.productName!=cproduct.productName);
   //  sessionStorage.clear();
     this.storage.set(AppGlobal.CART_KEY, this.productsInCart);
+    alert("Product has been added to the Cart, enjoy shopping!!! Get 10% off for order more than 5000$")
   
   }
 
@@ -90,4 +87,10 @@ export class CartComponent implements OnInit {
     console.log("was I here to checkout");
     this.router.navigate(['checkout']);
    }
+
+public goBackHome():void{
+
+  this.router.navigate(['Home'])
+ }
+
 }

@@ -7,11 +7,11 @@ import { Products } from 'src/app/model/product';
 import "rxjs/add/operator/map";
 import { AppResponse } from '../model/app-response';
 import { CartComponent } from '../cart/cart.component';
-import { CartserviceService } from '../cartservice.service';
+import { CartserviceService } from '../cart/cartservice.service';
 
 
 
-let productsUrl = CONFIG.baseUrls.products;
+
 
 
 @Injectable()
@@ -67,11 +67,6 @@ public loadProducts() : Observable<Products[]> {
      }
 
 
-  }
-
-  addProductToCart(product:Products): void {
-    this.cart.addProductToCart(product);
-    
   }
 
 }

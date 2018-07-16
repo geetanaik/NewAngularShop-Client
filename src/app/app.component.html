@@ -1,45 +1,31 @@
-<head>
-    <title>Ecommerce Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  
-   <div class="container-fluid">
-
-   <div class="head-row" > 
-        
-      <nav class="nav nav-pills">
-          <div>
-                <img src="../assets/images/logo.jpeg" class="img-responsive" style="display: inline;"/>Geeta's Shopping App
-
-          </div>
-         <div>
-             <ul class="nav navbar-nav">
-                 <li><a href="" [routerLink]="['Home']"> <i class="fa fa-home" aria-hidden="true"></i>Home</a> </li>
-             </ul>
-         </div>
-          <div>
-                <ul class="nav navbar-nav" style="float:right">
-                    <li><a [routerLink]="['viewcart']"><i class="fa fa-shopping-cart"></i> Shopping cart </a></li>
-                </ul>
-            </div>
-      </nav>      
-    </div> 
-
-</div> 
-   <hr>
+ <div class="head-row" > 
+          <span style="text-align:center;">
+             <!-- <img src="../assets/images/logo.jpeg" style="width:100px; height:100px;"/> -->
+             <h3 style="text-transform: capitalize"> Geeta's Shopping App</h3>
+           </span>
+          <hr>
+            <nav class="nav nav-pills"bvo>             
+                 <ul class="nav navbar-nav" style="float:left; margin-left: 10px">
+                     <li><a href="" [routerLink]="['Home']"> <i class="fa fa-home" aria-hidden="true"></i>Home</a> </li>
+                     <!-- <li> <a href="#">About</a></li> -->
+                     <li> <a href="#">Shipping & Handling</a ></li>
+                     <li><a href="#">Return Policy</a></li>
+                   <!-- <ul class="nav navbar-nav" style="float:right">  -->
+                        <div class="dropdown" style="float:right; margin-right:10px"> 
+                          <li ><a [routerLink]="['viewcart']"><i class="fa fa-shopping-cart"></i> Shopping cart </a></li>
+                                <!-- <div class="dropdown-content">
+                                 <app-cart></app-cart>
+                                </div> -->
+                            </div>    
+                    </ul>
+             
+          </nav>      
+        </div> 
+       <section>
+       <router-outlet></router-outlet>
+       </section>  
+       <app-footer></app-footer>
+       
+     
+       
     
-    <router-outlet></router-outlet>
-    
-  
-    <hr>
-    <app-footer></app-footer>
-  
-  
-  
-  
-   
-  

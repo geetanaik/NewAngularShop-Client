@@ -32,5 +32,12 @@ export class DisplayproductComponent implements OnInit {
   public DisplayProduct(product:Products): void{
     console.log(product)
   }
+  
+  //public rangeValueChanged(event,start:any, end:any){
+   //var start_el=this.getElement(start);
+   //var end_el=this.getElement(end);
+   //start_el.innerText=event.startValue;
+  // end_el.innerText=event.endValue;
 
+  //}
 }

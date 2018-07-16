@@ -8,6 +8,7 @@ import { RouterLinkActive, RouterLink, RouterState, Router, ActivatedRoute } fro
 import { RouterConfigLoader } from '@angular/router/src/router_config_loader';
 import { UrlResolver } from '@angular/compiler';
 import { CartComponent } from '../cart/cart.component';
+import { CartserviceService } from '../cart/cartservice.service';
 
 
 @Component({
@@ -20,8 +21,8 @@ export class GetproductsComponent implements OnInit{
 
    //@ViewChild(CartComponent)  cart; this helps us to access cart compoenent.
   // we are not using @input/output as they give access to one object only not entire component.
-  @ViewChild(CartComponent) 
-  private cart:CartComponent;
+  // @ViewChild(CartComponent) 
+  // private cart:CartComponent;
   
   public product:Products=new Products();
 
@@ -32,14 +33,13 @@ export class GetproductsComponent implements OnInit{
   sub:any;
 
   
-  public constructor(private getproductService:GetproductsService, private route: ActivatedRoute, private router: Router){
+  public constructor(private getproductService:GetproductsService, private route: ActivatedRoute, private router: Router,private cart:CartserviceService){
 
   }
   
   ngOnInit() { 
   //   let temp:Observable<AppResponse>=this.getproductService.sayhello();
   //   temp.subscribe(data=>{
-
   //    let msg=data.message;
   //    alert(msg)
   //  });
@@ -51,6 +51,9 @@ export class GetproductsComponent implements OnInit{
     console.log(this.name);
 
    })
+   
+
+   
 
   // public getProducts() : productList{
    let products:Observable<Products[]>=this.getproductService.loadProducts();
@@ -81,6 +84,7 @@ public addProductToCart(product:Products) {
 //     console.log(")#)#)#)#");
 //     console.log(product);
 //     console.log(this.cart);
+debugger
   this.cart.addProductToCart(product);
 }
 
@@ -88,27 +92,26 @@ public addProductToCart(product:Products) {
 // this.getproductService.addProductToCart(product)
 // }
 
-
 public inCartProduct(product:Products) :boolean {
+
   return this.cart.inCartProduct(product);
+
 }
 
 //public removeProductFromCart(product:Products):boolean{
-
  // return this.cart.removeProductFromCart(product);
 //}
-
 public removeProductFromCart(product:Products) :void {
   return this.cart.removeProductFromCart(product);
 }
 
+
+
+
+ // public getProductsbyCategory(productCat:product.category): Products{
+ //  let products:Observable<Products[]>=this.getproductService.getProductsbyCategory(product.category);
+//    alert(products);
+
+ // }
 }
-
-
-  //public getProductsbyCategory(productCat:product.category): productList{
-   // let products:Observable<Products[]>=this.getproductService.getProductsbyCategory(porduct.category);
-    //alert(products);
-
-
-  //}
   

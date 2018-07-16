@@ -1,62 +1,56 @@
-<br>
-<div class="container" *ngIf="cartItemsInSession.length > 0">
-  <div class="row">
-    <!-- List of Products -->
-    <div class="col-8">
-      <div class="row">
-        <div class="col-4" *ngFor="let product of cartItemsInSession">
-          <div class="item">
-            <div class=" mb-r">
+<div class="container"> 
+ 
+  <div class="col-sm-10 col-md-6 col-lg-9">
+       
+        <div class="cart">
+                        <div class="cart__body">
+                          <div class="cart-item" *ngFor="let cartItem of cartItemList">
+                            <div>
+                                <h3>{{cartItem.product.category}} :: {{cartItem.product.productName}} </h3>  
+                            </div>
+                            <div class="card horizontal">
+                                <div class="row" >
+                                  <img src="../../assets/images/perfume.jpeg" style="float:left; width:150px;height:150px;display:inline">
+                                    <!-- <img ng-src="http://localhost:8282{{item.product.imageUrl}}"/> -->
+                                    <!-- <img [src]="http://localhost:8282{{item.product.imageUrl}}" > -->
+                                
+                                  <h5> Product Description: </h5>
+                                  <ul>
+                                    <ol style="-webkit-text-size-adjust: 5%"> Multi-use easel to inspire painting, drawing, and countless ways to play creatively</ol>
+                                    <ol>Paper, paint, cups, paint brushes, and chalk sold separately; works best with 18-inch paper roll</ol>       
+                                    <ol>Folds flat for easy storage</ol>        
+                                     
+                                  </ul>    
+                                
+                                </div>
+                            </div>
+                           <div class="row">
+                            <div class="left" style="float:initial">Price: {{cartItem.product.price}} </div>
 
-              <!--Card-->
-              <div class="card card-cascade wider">
-
-                <!--Card image-->
+                            <div class="right" style="float:right">Quantity: <input type="number"  [(ngModel)]="cartItem.quantity"  default=1 min="1" max="99" required>
+                              <button>update</button>
+                                <div>
+                                        <h5 >Total Price:{{cartItem.quantity*cartItem.product.price}}</h5>
+                                    </div>
+                            </div> 
+                            
+                           </div>
+                           </div>
+                       
+                        </div>
+                        
                 
+                    
+        </div> 
+        <button type="button" style="float:right" class="btn btn-danger" (click)="goBackHome()" > Continue Shopping</button> 
 
-                  <div class="view overlay hm-white-slight">
-                    <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
-                   
-                      <div class="mask waves-effect waves-light" mdbRippleRadius></div>
-                   
-                  </div>
-               
+        <button type="button" style="float:right" class="btn btn-primary" (click)="totalproductcost();" >Review Order Summery </button>
+    </div>       
 
-                <!--/.Card image-->
+    <!-- <div cass="col-sm-2 col-md-4 col-lg-3" style="background-color:gainsboro">
 
-                <!--Card content-->
-                <div class="card-body text-center no-padding">
-                  <!--Category & Title-->
-                  <a class="text-muted">
-                    <h5>{{ product.products.productName }}</h5>
-                  </a>
-                  <h5 class="card-title">
-                    <strong>
-                     {{ product.products.productName }}
-                    </strong>
-                  </h5>
-
-                  <!--Description
-                  <p class="card-text">{{ product.productDescription }}
-                  </p>-->
-
-                </div>
-                <!--/.Card content-->
-
-              </div>
-              <!--/.Card-->
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-4">
-      <app-cart-calculator [products]="cartProducts"></app-cart-calculator>
-    </div>
+      <app-ordersummery></app-ordersummery>
+    </div> -->
+    
   </div>
-</div>
-<div class="container" *ngIf="cartProducts.length === 0">
-  <app-no-products-found [title]="messageTitle" [description]="messageDescription"></app-no-products-found>
-</div>
+        

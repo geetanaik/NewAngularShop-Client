@@ -21,6 +21,10 @@ import { HeaderComponent } from './header/header.component';
 import { IgxSliderModule } from 'igniteui-angular';
 import { NouisliderModule } from 'ng2-nouislider';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrdersummeryComponent } from './ordersummery/ordersummery.component';
+import { PaymentComponent } from './payment/payment.component';
+import { EmailService } from './payment/email.service';
+import { CartserviceService } from './cart/cartservice.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CarousalComponent,
     DisplayproductComponent,
     HeaderComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrdersummeryComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     IgxSliderModule,
     NouisliderModule
   ],
-  providers: [GetproductsService ],
+  providers: [GetproductsService,EmailService,],
   bootstrap: [AppComponent,]
 })
 export class AppModule { }

@@ -2,19 +2,19 @@
 .prod{
     display: block;
     box-sizing: border-box;
-    width: 350px;
-    height: 350px;
-    border: 1px solid rgb(250, 246, 246) ;        
+    width: 450px;
+    height: 500px;
+           
     background-color:#fff;  
     padding: 10px 40px 10px;
-	margin-top: 32px;
-	overflow: hidden;
-
+    margin-top: 32px;
+    overflow: hidden;
 }
+
 div.c {
     display: block;
-    box-sizing: border-box;
-    width: 250px;
+  
+    width: 500px;
     height: 250px;
     border: 1px solid rgb(224, 221, 221) ;        
     background-color:#fff;  
@@ -40,4 +40,39 @@ h1.d {
     font-weight: 900;
     color: #f8ce0b;
   }
-  
+.sidenav a {
+    padding: 26px 10px 10px 10px;
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 32px;
+    color: #f168f1;
+
+    display: block;
+   
+   
+    
+	
+}
+
+.sidenav a:hover {
+    color: blue;
+}
+
+  /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  border: 1px solid rgb(250, 246, 246) 
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+  border: 1px solid rgb(250, 246, 246) 
+}
+.card-footer a:hover {
+    color: blue;
+}

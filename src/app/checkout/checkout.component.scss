@@ -1,0 +1,32 @@
+.left {
+    text-align: right;
+    margin: 2px 10px;
+    display: inline;
+  }
+  
+  .right {
+    text-align: left;
+    margin: 2px 10px;
+    display: inline;
+  }
+  .cart-item{
+    display: block;
+    box-sizing: border-box;    
+    border: 1px solid rgb(250, 246, 246) ;        
+    background-color:#fff;  
+    padding: 10px 40px 10px;
+	
+	overflow: hidden;
+  }
+  .describe-right{
+    text-align: right;
+    margin: 200px 10px;
+    display: inline;
+
+  }
+  describe-left{
+
+    text-align: left;
+    margin: 200px 10px;
+    display: inline;
+  }

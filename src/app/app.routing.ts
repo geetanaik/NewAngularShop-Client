@@ -7,13 +7,17 @@ import { AppComponent } from "./app.component";
 import { DisplayproductComponent } from "./displayproduct/displayproduct.component";
 import { CarousalComponent } from "./carousal/carousal.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
+import { OrdersummeryComponent } from "./ordersummery/ordersummery.component";
+import { PaymentComponent } from "./payment/payment.component";
 
 
 
 const routes: Routes=[
 {component:GetproductsComponent, path:"Home"},
-//{component: CartComponent,path: "viewcart"},
+{component: CartComponent,path: "viewcart"},
 {component: CheckoutComponent,path: "checkout"},
+{component:OrdersummeryComponent,path:"payment"},
+{component:PaymentComponent, path:'pay'},
 {component: GetproductsComponent, path:"products/:category"},
 {component:DisplayproductComponent,path:"products/:id"},
 {component:CarousalComponent, path:"*"},
