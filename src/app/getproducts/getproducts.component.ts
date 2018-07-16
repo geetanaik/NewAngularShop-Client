@@ -32,12 +32,23 @@ export class GetproductsComponent implements OnInit{
   name:any;
   sub:any;
 
-  
+  items: Array<any> = []
   public constructor(private getproductService:GetproductsService, private route: ActivatedRoute, private router: Router,private cart:CartserviceService){
 
   }
   
   ngOnInit() { 
+    this.items = [
+      { name:'phone',image: 'assets/images/home5.jpg' ,price:'700'},
+      { name: 'headphont',image:'assets/images/item6.jpg' ,price:'200'},
+      {name:'speakers', image: 'assets/images/home5.jpeg' ,price:'300'},
+      { name:'phone',image: 'assets/images/home10.jpg' ,price:'600'},
+      { name:'ipad',image: 'assets/images/home11.jpg' ,price:'500'},
+      { name:'phone',image: 'assets/images/home12.jpg' ,price:'400'},
+      { name:'phone',image: 'assets/images/home13.jpg' ,price:'100'},
+  
+    ]
+   
   //   let temp:Observable<AppResponse>=this.getproductService.sayhello();
   //   temp.subscribe(data=>{
   //    let msg=data.message;

@@ -18,11 +18,12 @@ export class PaymentComponent implements OnInit {
   public ptotalPrice:number;
   emailAccount: EmailAccount;
   constructor(private emailService: EmailService,@Inject(SESSION_STORAGE) private storage: WebStorageService,private router: Router) { 
-  // this.emailAccount = new EmailAccount();
+  this.emailAccount = new EmailAccount();
   }
   ngOnInit() {
   }
-  // sendEmail(){
-  //   this.emailService.sendEmail(this.emailAccount);
-  // }
+  debugger
+   sendEmail(){
+    this.emailService.sendEmail(this.emailAccount);
+   }
 }
