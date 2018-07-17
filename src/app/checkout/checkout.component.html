@@ -1,9 +1,14 @@
 <div class="container"> 
  
   <div class="col-sm-10 col-md-6 col-lg-9">
-       
+      <div class="noitems" *ngIf="cartItemList.length===0">
+          <p>Your Cart is Empty</p>
+
+        </div>   
+
         <div class="cart">
                         <div class="cart__body">
+                          
                           <div class="cart-item" *ngFor="let cartItem of cartItemList">
                             <div>
                                 <h3>{{cartItem.product.category}} :: {{cartItem.product.productName}} </h3>  
@@ -29,22 +34,23 @@
 
                             <div class="right" style="float:right">Quantity: <input type="number"  [(ngModel)]="cartItem.quantity"  default=1 min="1" max="99" required>
                               <button>update</button>
-                                <div>
+                                    <div>
                                         <h5 >Total Price:{{cartItem.quantity*cartItem.product.price}}</h5>
                                     </div>
                             </div> 
+                            <button type="button" style="float:right" class="btn btn-danger" (click)="goBackHome()" > Continue Shopping</button> 
+
+                            <button type="button" style="float:right" class="btn btn-primary" (click)="totalproductcost();" >Review Order Summery </button>     
                             
                            </div>
                            </div>
                        
                         </div>
                         
-                
+                       
                     
         </div> 
-        <button type="button" style="float:right" class="btn btn-danger" (click)="goBackHome()" > Continue Shopping</button> 
-
-        <button type="button" style="float:right" class="btn btn-primary" (click)="totalproductcost();" >Review Order Summery </button>
+        
     </div>       
 
     <!-- <div cass="col-sm-2 col-md-4 col-lg-3" style="background-color:gainsboro">

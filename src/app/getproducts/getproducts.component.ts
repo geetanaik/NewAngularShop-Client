@@ -33,31 +33,27 @@ export class GetproductsComponent implements OnInit{
   sub:any;
 
   items: Array<any> = []
-  public constructor(private getproductService:GetproductsService, private route: ActivatedRoute, private router: Router,private cart:CartserviceService){
+  public constructor(private getproductService:GetproductsService, private route: ActivatedRoute, private router: Router,private cart:CartserviceService)
+  {
 
   }
   
   ngOnInit() { 
     this.items = [
-      { name:'phone',image: 'assets/images/home5.jpg' ,price:'700'},
-      { name: 'headphont',image:'assets/images/item6.jpg' ,price:'200'},
+    
       {name:'speakers', image: 'assets/images/home5.jpeg' ,price:'300'},
-      { name:'phone',image: 'assets/images/home10.jpg' ,price:'600'},
-      { name:'ipad',image: 'assets/images/home11.jpg' ,price:'500'},
-      { name:'phone',image: 'assets/images/home12.jpg' ,price:'400'},
-      { name:'phone',image: 'assets/images/home13.jpg' ,price:'100'},
+      { name:'phone',image: 'assets/images/home10.jpeg' ,price:'600'},
+      { name:'ipad',image: 'assets/images/home11.jpeg' ,price:'500'},
+      { name:'phone',image: 'assets/images/home12.jpeg' ,price:'400'},
+      { name:'phone',image: 'assets/images/home13.jpeg' ,price:'100'},
+      { name:'phone',image: 'assets/images/home5.jpeg' ,price:'700'},
   
     ]
    
-  //   let temp:Observable<AppResponse>=this.getproductService.sayhello();
-  //   temp.subscribe(data=>{
-  //    let msg=data.message;
-  //    alert(msg)
-  //  });
    this.sub=this.route.params.subscribe(params =>{
       console.log(params) 
       this.name=params['category'];
-     
+      
     console.log(this.sub);
     console.log(this.name);
 
@@ -86,27 +82,19 @@ export class GetproductsComponent implements OnInit{
   /**
    * getItemDetails
    */
-  public getItemDetails(): void{
+  public DisplayProduct(): void{
     
     this.router.navigate(['displayproduct']);
   }
 
 public addProductToCart(product:Products) {
-//     console.log(")#)#)#)#");
-//     console.log(product);
-//     console.log(this.cart);
-debugger
   this.cart.addProductToCart(product);
 }
 
-// public addProductToCart(product:Products){
-// this.getproductService.addProductToCart(product)
-// }
+
 
 public inCartProduct(product:Products) :boolean {
-
   return this.cart.inCartProduct(product);
-
 }
 
 //public removeProductFromCart(product:Products):boolean{
@@ -117,12 +105,20 @@ public removeProductFromCart(product:Products) :void {
 }
 
 
-
-
- // public getProductsbyCategory(productCat:product.category): Products{
- //  let products:Observable<Products[]>=this.getproductService.getProductsbyCategory(product.category);
-//    alert(products);
-
- // }
+public onPriceSearchHandler(event){
+  let min:number= event[0];
+  let max:number =event[1];
+  console.log(min);
+  console.log(max);
+  let min1=parseInt(event[0]);
+  //alert (min1)
+  console.log(this.productList)
+  //this.productList = this.getproductService.getProducts(min, max);
+  this.productList =this.productList.filter((item) =>item.price > min);
+  this.productList=this.productList.filter((item)=>item.price< max)
+  console.log(this.productList)
 }
-  
+
+}
+
+ 

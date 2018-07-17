@@ -9,7 +9,7 @@ export class CarousalComponent implements OnInit {
   items: Array<any> = []
   constructor() {
     this.items = [
-      { name: 'assets/images/landingpage.jpg' },
+      //{ name: 'assets/images/landingpage.jpg' },
       { name: 'assets/images/item1.jpg' },
       { name: 'assets/images/home2.jpeg' },
       { name: 'assets/images/newhome.jpg' },

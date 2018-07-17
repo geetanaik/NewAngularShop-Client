@@ -1,15 +1,46 @@
 
-<div class="container">
-<div class="col-sm-2 col-md-2 col-lg-2" style=" background-color:azure;  width:250px;">
+
+<div class="col-sm-2 col-md-2 col-lg-2" style="   width:200px; color: maroon">
 <div class="sidenav">
   <ul>
+    
     <li *ngFor="let String of categoryList;let i=index"> 
-      <a class="route" href="products/{{categoryList[i]}}" >{{categoryList[i]}}</a> 
-    </li>  
+      <a class="route" href="products/{{categoryList[i]}}"  style="color:maroon">{{categoryList[i]}}</a> 
+    </li> 
    
-  </ul>
-   
+  </ul>  
+</div>
+<!-- <div class="form-group">
+    <label for="sel1">Sort by price</label>
+    <select class="form-control" (change)="priceRange(selectField.value)" #selectField >
+      <option>select</option>
+      <option value="1" >less than 500$</option>
+      <option value="2">between 600$ and 1000$</option>
+      <option value="3">over 1000$</option>
+
+    </select>
+  </div> -->
+
+
+<div style="margin-top:20px">
+    <div style="font-weight: bold;">Price</div>
+    <input type="text" name="min" placeholder="$Min" class="text" [(ngModel)]="min" style="width:70px" />
+    <input type="text" name="max" placeholder="$Max" class="text" [(ngModel)]="max"  style="width:70px"/>
+    <button type="button" class="button" (click)="getByPrice()">Go</button>
+  </div>
+
+
+<!-- <div class="from-group">
+  <lable>Sort By Price</lable>
+  <select class="from-control" (change)="priceRange(selectField.value)" #selectField>
+    <option> select</option>
+    <option value="1">less than 200$</option>
+    <option value="2">less than 400$</option>
+
+  </select>
+
+</div> -->
 </div> 
-</div>
-</div>
+
+
 

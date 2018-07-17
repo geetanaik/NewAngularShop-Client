@@ -17,6 +17,9 @@ export class DisplayproductComponent implements OnInit {
   constructor(private getproductService:GetproductsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+  
+
     this.sub=this.route.params.subscribe(params =>{
       console.log(params) 
       this.name=params['category'];

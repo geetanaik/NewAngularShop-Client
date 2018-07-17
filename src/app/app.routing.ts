@@ -20,6 +20,7 @@ const routes: Routes=[
 {component:PaymentComponent, path:'pay'},
 {component: GetproductsComponent, path:"products/:category"},
 {component:DisplayproductComponent,path:"products/:id"},
+{component:DisplayproductComponent,path:"displayproduct"},
 {component:CarousalComponent, path:"*"},
 {component:CarousalComponent, path:""},
 {component:CarousalComponent, path:"**"},

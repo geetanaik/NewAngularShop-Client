@@ -10,3 +10,12 @@
 .sidenav a:hover {
     color: blue;
 }
+
+container {
+    margin: 30px 20px;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}

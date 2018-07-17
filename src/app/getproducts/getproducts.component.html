@@ -1,119 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
 
-  <div class="col-sm-2 col-md-6 col-lg-1">
-    <app-sidebar></app-sidebar>
-   </div> 
-   
-  <div class="col-sm-10 col-md-6 col-lg-11" style="display:block ;float:center; width:750px;" *ngIf="productList.length>0">
-      <div ng2-carouselamos class="slides-wrapper" [items]="productList" [width]="900" [$prev]="prev" [$next]="next" 
-      [$item]="item" (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+.sidenav {
+  height: 70%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 200px;
+  left: 0;
+  background-color: rgb(250, 246, 246);
+  overflow-x: hidden;
+  
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #0e0101;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 15px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  top: 200px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <app-sidebar (onPriceSearch)="onPriceSearchHandler($event)"></app-sidebar>
+</div>
+
+<div class="main">
+        <div ng2-carouselamos class="slides-wrapper" [items]="productList" [width]="900" [$prev]="prev" [$next]="next" 
+        [$item]="item" (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+        </div> 
+        
+        <ng-template #item let-item let-i="index" #item>
+  
+          <div class="prod">
+            
+            <p > {{item.productName}}</p>
+            <a class="route" href="products/{{item.id}}" (click)= 'DisplayProduct(item)'>
+            <p><img src="http://localhost:8282{{item.imageUrl}}" style="width:200px;height:200px"/> </p>
+          </a>
+            <p>Price:{{item.price}}$</p>
+            <p> Item Description: this is a wonderful product we have.</p>
+            <!--<p class="stars-inner"></p>-->
+            <!-- <button (click)="addProductToCart(item);" class="btn btn-primary"> Add to Cart </button> -->
+            <!-- <button (click)="addProductToCart(item);" 
+       [ngClass]="inCartProduct(item)? 'btn btn-success' : 'btn btn-primary'"> 
+       {{inCartProduct(item) ? 'In Cart' : 'Add to cart'}}
+      </button> -->
+  
+      <div class="card-footer">
+        <!-- <span class="left">{{ item.price }} $</span> -->
+        <span class="left"><p class="stars-inner" style="float:left"></p></span>
+        <span class="right" style="float:right"> 
+          
+          <!-- <a placement="top" mdbTooltip="Quick Look" container="body" [routerLink]="['/products/product', product.$key]"> -->
+            <i class="fa fa-eye"></i>
+         
+          <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
+            <i class="fa fa-heart"></i>
+          </a>
+          <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
+            <i class="fa fa-shopping-cart"></i>
+          </a>
+          <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeProductFromCart(item)" >
+            <i class="fa fa-trash"></i>
+          </a>
+        </span>
+      </div>
       </div> 
-      
-      <ng-template #item let-item let-i="index" #item>
-
-        <div class="prod">
-          
-          <p > {{item.productName}}</p>
-          <a class="route" href="products/{{item.id}}" (click)= 'DisplayProduct(item)'>
-          <p><img src="http://localhost:8282{{item.imageUrl}}" style="width:200px;height:200px"/> </p>
-        </a>
-          <p>Price:{{item.price}}$</p>
-          <p> Item Description: this is a wonderful product we have.</p>
-          <!--<p class="stars-inner"></p>-->
-          <!-- <button (click)="addProductToCart(item);" class="btn btn-primary"> Add to Cart </button> -->
-          <!-- <button (click)="addProductToCart(item);" 
-     [ngClass]="inCartProduct(item)? 'btn btn-success' : 'btn btn-primary'"> 
-     {{inCartProduct(item) ? 'In Cart' : 'Add to cart'}}
-    </button> -->
-
-    <div class="card-footer">
-      <!-- <span class="left">{{ item.price }} $</span> -->
-      <span class="left"><p class="stars-inner" style="float:left"></p></span>
-      <span class="right" style="float:right"> 
-        
-        <!-- <a placement="top" mdbTooltip="Quick Look" container="body" [routerLink]="['/products/product', product.$key]"> -->
-          <i class="fa fa-eye"></i>
-       
-        <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
-          <i class="fa fa-heart"></i>
-        </a>
-        <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
-          <i class="fa fa-shopping-cart"></i>
-        </a>
-        <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeProductFromCart(item)" >
-          <i class="fa fa-trash"></i>
-        </a>
-      </span>
-    </div>
-    </div> 
-
-      </ng-template>
-      <ng-template #prev>
-          <img src="../assets/images/left-arrow.png" id="left" height="15px" />
+  
         </ng-template>
-        <ng-template #next>
-          <img src="../assets/images/right.jpeg" id="right" height="15px" />
-      </ng-template>
+        <ng-template #prev>
+            <img src="../assets/images/left-arrow.png" id="left" height="15px" />
+          </ng-template>
+          <ng-template #next>
+            <img src="../assets/images/right.jpeg" id="right" height="15px" />
+          </ng-template>  
+    </div>
 
 
-     
-
-  </div>
-  <div class="col-sm-2 col-md-3 col-lg-11" *ngIf="productList.length===0">
-
-      <div style="text-align:center">
-          <h2>Check our Featured Products</h2>
-       </div>
-        
-       <div>
-          <div ng2-carouselamos class="slides-wrapper" [items]="items" [width]="1300"  [$prev]="prev" [$next]="next" [$item]="item">
-            </div> 
-            <ng-template #prev>
-              <img src="../assets/images/left-arrow.png" id="left" height="10px" />
-            </ng-template>
-            <ng-template #next>
-              <img src="../assets/images/right.jpeg" id="right" height="10px" />
-            </ng-template>
-            <ng-template #item let-item let-i="index">
-             
-              <div class="items"  style="box-sizing: border-box;   border-block-end-color: lavender">
-                <div> {{item.name}}</div>
-                <img src="{{ item.image }}" style="width:250px;height:250px">
-                <p>price:{{item.price}}$</p>
-                <p>Description: one of the latest technology amezing product</p>
-              </div>
-              
-              <!-- <div class="card-footer">
-                <span class="right">   
-                  <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
-                    <i class="fa fa-heart"></i>
-                  </a>
-                  <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
-                    <i class="fa fa-shopping-cart"></i>
-                  </a>
-                  <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeProductFromCart(item)">
-                    <i class="fa fa-trash"></i>
-                  </a>
-                </span> 
-              </div>-->
-
-
-
-
-
-
-
-              
-            </ng-template>
-          </div> 
+    <div class="col-sm-2 col-md-3 col-lg-11" *ngIf="productList.length===0">
+  
+        <div style="text-align:center">
+            <h2>Check our Featured Products</h2>
+         </div>
           
+         <div>
+            <div ng2-carouselamos class="slides-wrapper" [items]="items" [width]="1300"  [$prev]="prev" [$next]="next" [$item]="item">
+              </div> 
+              <ng-template #prev>
+                <img src="../assets/images/left-arrow.png" id="left" height="10px" />
+              </ng-template>
+              <ng-template #next>
+                <img src="../assets/images/right.jpeg" id="right" height="10px" />
+              </ng-template>
+              <ng-template #item let-item let-i="index">
+               
+                <div class="items"  style="box-sizing: border-box;   border-block-end-color: lavender">
+                  <div> {{item.name}}</div>
+                  <img src="{{ item.image }}" style="width:250px;height:250px">
+                  <p>price:{{item.price}}$</p>
+                  <p>Description: one of the latest technology amezing product</p>
+                </div>
+                
+                <!-- <div class="card-footer">
+                  <span class="right">   
+                    <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
+                      <i class="fa fa-heart"></i>
+                    </a>
+                    <a placement="top" mdbTooltip="Add to Wishlist" container="body" (click)="addProductToCart(item)">
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
+                    <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeProductFromCart(item)">
+                      <i class="fa fa-trash"></i>
+                    </a>
+                  </span> 
+                </div>-->
+  
+  
+  
+  
+  
+  
+  
+                
+              </ng-template>
+            </div> 
+            
+  
     
+          </div>
 
-    
-  </div>  
-    <!-- <div class="col-sm-2 col-md-3 col-lg-2">
-        <app-cart></app-cart>
-    </div> -->
 
-   
- 
-
+</body>
+</html> 
